@@ -12,9 +12,13 @@ public class Paddle : MonoBehaviour
 
     public string inputName;
 
-    void Start()
+    private void Awake()
     {
         hinge = GetComponent<HingeJoint>();
+    }
+
+    void Start()
+    {
         hinge.useSpring = true;
     }
 
