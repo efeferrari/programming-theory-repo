@@ -950,8 +950,7 @@ Transform:
   m_LocalRotation: {x: 0.38264772, y: 0.0052295695, z: -0.0126252975, w: 0.9237933}
   m_LocalPosition: {x: 5.8687, y: -6.0800395, z: -6.7479477}
   m_LocalScale: {x: 1, y: 0.26699004, z: 1}
-  m_Children:
-  - {fileID: 1580328543}
+  m_Children: []
   m_Father: {fileID: 1942072724}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: -1.566}
@@ -1244,6 +1243,7 @@ GameObject:
   - component: {fileID: 1580328546}
   - component: {fileID: 1580328545}
   - component: {fileID: 1580328544}
+  - component: {fileID: 1580328547}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -1258,12 +1258,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580328542}
-  m_LocalRotation: {x: -0.000000029802319, y: -4.6566123e-10, z: 0.013665522, w: 0.9999066}
-  m_LocalPosition: {x: -0.06, y: 3.7, z: 0.03}
-  m_LocalScale: {x: 1, y: 3.737794, z: 1}
+  m_LocalRotation: {x: 0.38268343, y: -0, z: -1.781842e-10, w: 0.92387956}
+  m_LocalPosition: {x: 5.898, y: -5.19, z: -6.34}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
-  m_Father: {fileID: 1330057479}
-  m_RootOrder: 0
+  m_Father: {fileID: 1942072724}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!135 &1580328544
 SphereCollider:
@@ -1297,7 +1297,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 16b0c15223d724c6095b22a3530f3536, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1327,6 +1327,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580328542}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1580328547
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580328542}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1604561792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,6 +1467,7 @@ Transform:
   m_Children:
   - {fileID: 1346801795}
   - {fileID: 1330057479}
+  - {fileID: 1580328543}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -9,6 +9,10 @@ public class Cannon : MonoBehaviour
     GameObject firstObstacle;
     Rigidbody ballRb;
 
+    // Event Publisher
+    public delegate void ThrowedBall();
+    public event ThrowedBall tb;
+
     void Start()
     {
         GM = GameManager.Instance;
@@ -19,9 +23,8 @@ public class Cannon : MonoBehaviour
 
     void Update()
     {
-        if (!GM.IsGameOver && GM.CanThrow() && Input.GetKeyDown(KeyCode.Space))
+        if (!GM.IsGameOver && GM.CanThrow() && Input.GetKeyUp(KeyCode.Space))
         {
-            Debug.Log("Game Over and spacebar has benn pressed");
             ThrowBall();
         }
     }
@@ -30,13 +33,20 @@ public class Cannon : MonoBehaviour
     {
         Vector3 firstObstaclePosition = GameObject.Find("FirstObstacle").transform.position;
 
-        // Calculate ball trayectory.
         Vector3 ballPos = ball.transform.position;
         Vector3 obstPos = firstObstacle.transform.position;
 
         Vector3 direction = (obstPos - ballPos) / 2;
 
-        Debug.Log("Throw a new ball now!");
-        ballRb.AddForce(direction);
+        ballRb.AddForce(direction * 2.5f, ForceMode.Impulse);
+
+        if (tb != null)
+        {
+            tb();
+        }
+        else
+        {
+            Debug.Log("Your are not subscribed to throwedBall event");
+        }
     }
 }
