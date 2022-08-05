@@ -8,6 +8,7 @@ TagManager:
   - PaddleLeft
   - PaddleRight
   - FirstObstacle
+  - BallResetCollider
   layers:
   - Default
   - TransparentFX

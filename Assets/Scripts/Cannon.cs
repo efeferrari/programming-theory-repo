@@ -8,8 +8,8 @@ public class Cannon : MonoBehaviour
     GameObject ball;
     GameObject firstObstacle;
     Rigidbody ballRb;
+    [SerializeField] private float shotImpulseForce = 3.5f;
 
-    // Event Publisher
     public delegate void ThrowedBall();
     public event ThrowedBall tb;
 
@@ -38,7 +38,7 @@ public class Cannon : MonoBehaviour
 
         Vector3 direction = (obstPos - ballPos) / 2;
 
-        ballRb.AddForce(direction * 2.5f, ForceMode.Impulse);
+        ballRb.AddForce(direction * shotImpulseForce, ForceMode.Impulse);
 
         if (tb != null)
         {

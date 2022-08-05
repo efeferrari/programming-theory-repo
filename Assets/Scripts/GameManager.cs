@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public int  BallCount    { get; set; }
     public bool BallActive   { get; private set; }
     public int  CurrentScore { get; private set; }
+    public Vector3 BallInitialPosition { get; private set; }
 
     private void Awake()
     {
@@ -33,6 +34,8 @@ public class GameManager : MonoBehaviour
     {
         Cannon cannon = GameObject.Find("Cannon").GetComponent<Cannon>();
         cannon.tb += SetBallActive;
+
+        BallInitialPosition = GameObject.Find("Ball").GetComponent<Transform>().position;
     }
 
     void Update()
@@ -55,8 +58,14 @@ public class GameManager : MonoBehaviour
         return (BallCount < BallLimit);
     }
 
-    public void AddPoint()
+    public void AddScore(int point)
     {
-        CurrentScore += 1;
+        CurrentScore += point;
+    }
+
+    public void ResetBallPosition()
+    {
+        GameObject.Find("Ball").GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GameObject.Find("Ball").GetComponent<Transform>().position = BallInitialPosition;
     }
 }
