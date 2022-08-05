@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public bool BallActive   { get; private set; }
     public int  CurrentScore { get; private set; }
     public Vector3 BallInitialPosition { get; private set; }
+
+    private TextMeshProUGUI scoreUI;
 
     private void Awake()
     {
@@ -36,6 +39,8 @@ public class GameManager : MonoBehaviour
         cannon.tb += SetBallActive;
 
         BallInitialPosition = GameObject.Find("Ball").GetComponent<Transform>().position;
+
+        scoreUI = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
@@ -61,6 +66,8 @@ public class GameManager : MonoBehaviour
     public void AddScore(int point)
     {
         CurrentScore += point;
+
+        scoreUI.text = "Score: " + CurrentScore;
     }
 
     public void ResetBallPosition()
