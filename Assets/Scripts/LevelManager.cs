@@ -17,8 +17,6 @@ public class LevelManager : MonoBehaviour
     {
         GM = GameManager.Instance;
 
-        Debug.Log("Start Level. " + GM.CurrentPlayer);
-
         // Set Ball as active when Cannon throws it.
         Cannon cannon = GameObject.Find("Cannon").GetComponent<Cannon>();
         cannon.throwedBall += SetBallActive;
@@ -58,9 +56,6 @@ public class LevelManager : MonoBehaviour
     {
         if (GM.CurrentScore > GM.BestScore)
         {
-            Debug.Log("Update BS now");
-            Debug.Log(GM.CurrentScore + " > " + GM.BestScore);
-
             GM.BestPlayer = GM.CurrentPlayer;
             GM.BestScore = GM.CurrentScore;
         }

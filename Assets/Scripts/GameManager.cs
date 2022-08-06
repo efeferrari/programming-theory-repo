@@ -40,9 +40,6 @@ public class GameManager : MonoBehaviour
         SavedData sd = GetSavedData();
         BestPlayer = sd.player;
         BestScore  = sd.score;
-
-        Debug.Log("Previous Best Player: " + BestPlayer);
-        Debug.Log("Previous Best Score: " + BestScore);
     }
 
     void Update()
@@ -85,9 +82,6 @@ public class GameManager : MonoBehaviour
     private void UpdateBestScore()
     {
         SavedData currentSavedData = GetSavedData();
-
-        Debug.Log("currentSavedData.Player: " + currentSavedData.player);
-        Debug.Log("currentSavedData.Score: " + currentSavedData.score);
 
         if (currentSavedData.score < CurrentScore)
         {
