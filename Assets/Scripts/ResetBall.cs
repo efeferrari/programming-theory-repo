@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class ResetBall : MonoBehaviour
 {
-    GameManager GM;
-
-    private void Start()
-    {
-        GM = GameManager.Instance;
-    }
+    public delegate void RestardedBall();
+    public event RestardedBall restardedBall;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Ball")
         {
-            GM.ResetBallPosition();
+            restardedBall();
         }
     }
 }

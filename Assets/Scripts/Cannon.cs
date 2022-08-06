@@ -5,13 +5,14 @@ using UnityEngine;
 public class Cannon : MonoBehaviour
 {
     GameManager GM;
+    LevelManager LM;
     GameObject ball;
     GameObject firstObstacle;
     Rigidbody ballRb;
     [SerializeField] private float shotImpulseForce = 3.5f;
 
     public delegate void ThrowedBall();
-    public event ThrowedBall tb;
+    public event ThrowedBall throwedBall;
 
     void Start()
     {
@@ -19,11 +20,12 @@ public class Cannon : MonoBehaviour
         ball = GameObject.Find("Ball");
         firstObstacle = GameObject.Find("FirstObstacle");
         ballRb = ball.GetComponent<Rigidbody>();
+        LM = GameObject.Find("LevelManager").GetComponent<LevelManager>();
     }
 
     void Update()
     {
-        if (!GM.IsGameOver && GM.CanThrow() && Input.GetKeyUp(KeyCode.Space))
+        if (GM.CanThrow() && Input.GetKeyUp(KeyCode.Space))
         {
             ThrowBall();
         }
@@ -40,13 +42,23 @@ public class Cannon : MonoBehaviour
 
         ballRb.AddForce(direction * shotImpulseForce, ForceMode.Impulse);
 
-        if (tb != null)
+        if (throwedBall != null)
         {
-            tb();
+            throwedBall();
         }
         else
         {
             Debug.Log("Your are not subscribed to throwedBall event");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Ball")
+        {
+            // If Ball falls into the cannon, set the status to inactive to
+            // allow the User to throw it again
+            LM.SetBallInactive();
         }
     }
 }

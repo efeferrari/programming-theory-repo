@@ -5,18 +5,18 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     [SerializeField] private int hitValue;
-    GameManager GM;
+    LevelManager LM;
 
     private void Start()
     {
-        GM = GameManager.Instance;
+        LM = GameObject.Find("LevelManager").GetComponent<LevelManager>();
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Ball")
         {
-            GM.AddScore(hitValue);
+            LM.AddScore(hitValue);
         }
     }
 }
