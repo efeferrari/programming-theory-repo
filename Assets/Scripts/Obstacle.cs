@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    // POLYMORPHISM: Every obstacle has teir own value
     [SerializeField] private int hitValue;
     LevelManager LM;
 

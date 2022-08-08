@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
 
     public Vector3 BallInitialPosition { get; private set; }
 
+    // ENCAPSULATION
     private TextMeshProUGUI scoreUI;
     private TextMeshProUGUI bestScoreUI;
     private GameObject gameOverUI;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+// INHERITANCE
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
+            // ABSTRACTION
             Destroy(this);
         }
         else
@@ -63,7 +65,7 @@ public class GameManager : MonoBehaviour
     public void CloseGame()
     {
         UpdateBestScore();
-
+// ABSTRACTION
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.ExitPlaymode();
 #else
